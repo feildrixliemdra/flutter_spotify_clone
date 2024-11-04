@@ -86,12 +86,11 @@ class SigninSignupPage extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: TextButton(
-                            child: Text(
+                            child: const Text(
                               'Sign In',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
-                                color: Colors.black,
                               ),
                             ),
                             onPressed: () {

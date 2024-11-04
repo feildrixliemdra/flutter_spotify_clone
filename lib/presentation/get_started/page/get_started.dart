@@ -3,7 +3,6 @@ import 'package:flutter_spotify_clone/common/widget/button/basic_app_button.dart
 import 'package:flutter_spotify_clone/core/config/asset/app_image.dart';
 import 'package:flutter_spotify_clone/core/config/asset/app_vector.dart';
 import 'package:flutter_spotify_clone/core/config/theme/app_color.dart';
-import 'package:flutter_spotify_clone/presentation/auth/page/signin_signup.dart';
 import 'package:flutter_spotify_clone/presentation/theme_mode/page/theme_mode.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -63,7 +62,7 @@ class GetStartedPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const SigninSignupPage(),
+                                    const ThemeModePage(),
                               ));
                         })
                   ],
