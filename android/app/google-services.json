@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "645368066947",
+    "project_id": "flutter-spotify-clone-fldx",
+    "storage_bucket": "flutter-spotify-clone-fldx.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645368066947:android:7ab379969a9fd4550c3cb6",
+        "android_client_info": {
+          "package_name": "com.example.spotify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbH9N3u9OiR16NZU-Qc9cO7nT2V8cDb-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

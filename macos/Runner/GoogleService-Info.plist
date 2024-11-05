@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDubd5jffU5fswW7L_pjF3sC_dTgq4SJVI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>645368066947</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.flutterSpotifyClone</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-spotify-clone-fldx</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-spotify-clone-fldx.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:645368066947:ios:f4dae74b4238b03f0c3cb6</string>
+</dict>
+</plist>

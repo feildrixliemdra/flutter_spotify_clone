@@ -3,6 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spotify_clone/common/widget/appbar/basic_app_bar.dart';
 import 'package:flutter_spotify_clone/common/widget/button/basic_app_button.dart';
 import 'package:flutter_spotify_clone/core/config/asset/app_vector.dart';
+import 'package:flutter_spotify_clone/data/model/auth/sign_up_request.dart';
+import 'package:flutter_spotify_clone/domain/usecase/auth/signin.dart';
+import 'package:flutter_spotify_clone/presentation/home/page/home.dart';
+import 'package:flutter_spotify_clone/service_locator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -57,7 +61,26 @@ class RegisterPage extends StatelessWidget {
             ),
             BasicAppButton(
               text: 'Create Account',
-              onPressed: () {}, //TODO: implement this
+              onPressed: () async {
+                var result = await sl<SignUpUseCase>().call(
+                    param: CreateUserRequest(
+                  fullName: _fullName.text.toString(),
+                  email: _email.text.toString(),
+                  password: _password.text.toString(),
+                ));
+
+                result.fold((l) {
+                  var snackBar = SnackBar(content: Text(l));
+
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }, (r) {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => const HomePage()),
+                      (route) => false);
+                });
+              },
               height: 50,
             ),
           ],
