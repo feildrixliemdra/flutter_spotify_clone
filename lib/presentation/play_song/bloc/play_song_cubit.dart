@@ -8,7 +8,7 @@ class PlaySongCubit extends Cubit<PlaySongState> {
   Duration songDuration = Duration.zero;
   Duration songPosition = Duration.zero;
 
-  PlaySongCubit() : super(PlaySongLoadingState()) {}
+  PlaySongCubit() : super(PlaySongLoadingState());
 
   void updateSongPlayer() {
     emit(PlaySongLoadedState());

@@ -57,7 +57,6 @@ class GetStartedPage extends StatelessWidget {
                     BasicAppButton(
                         text: 'Get Started',
                         onPressed: () {
-                          print('printed');
                           Navigator.push(
                               context,
                               MaterialPageRoute(

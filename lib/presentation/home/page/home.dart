@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   BasicAppBar _buildAppBar() {
     switch (_selectedIndex) {
       case 2:
-        return BasicAppBar(
+        return const BasicAppBar(
           title: Text(
             'Profile',
             style: TextStyle(

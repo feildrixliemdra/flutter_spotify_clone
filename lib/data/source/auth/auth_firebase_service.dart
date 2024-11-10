@@ -4,8 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_spotify_clone/data/model/auth/sign_in_request.dart';
 import 'package:flutter_spotify_clone/data/model/auth/sign_up_request.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_spotify_clone/data/model/auth/user.dart';
-import 'package:flutter_spotify_clone/data/model/song/song.dart';
 import 'package:flutter_spotify_clone/domain/entity/auth/user.dart';
 
 abstract class AuthFirebaseService {
@@ -89,10 +87,10 @@ class AuthFirebaseImpl extends AuthFirebaseService {
             fullName: userDoc.get('fullName'),
           ));
         } else {
-          return Left('No user found with this email.');
+          return const Left('No user found with this email.');
         }
       } else {
-        return Left('No user is currently signed in.');
+        return const Left('No user is currently signed in.');
       }
     } catch (e) {
       return Left("Error fetching user data: $e");

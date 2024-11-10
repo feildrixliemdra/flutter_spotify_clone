@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_spotify_clone/core/config/asset/app_image.dart';
 import 'package:flutter_spotify_clone/core/config/asset/app_vector.dart';
 import 'package:flutter_spotify_clone/core/config/theme/app_color.dart';
@@ -33,12 +31,12 @@ class _HomeSubPageState extends State<HomeSubPage>
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _homeArtisCard(context),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           _tabs(
@@ -49,29 +47,29 @@ class _HomeSubPageState extends State<HomeSubPage>
             child: TabBarView(
               controller: _tabController,
               children: [
-                NewsSong(),
+                const NewsSong(),
                 Container(
                   height: 20,
                   width: 20,
                   color: Colors.amber,
-                  child: Text('hello2'),
+                  child: const Text('hello2'),
                 ),
                 Container(
-                  child: Text('hello3'),
+                  child: const Text('hello3'),
                 ),
                 Container(
                   height: 20,
                   width: 20,
                   color: Colors.teal,
-                  child: Text('hello4'),
+                  child: const Text('hello4'),
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Playlist(),
+          const Playlist(),
         ],
       ),
     );
@@ -99,7 +97,7 @@ class _HomeSubPageState extends State<HomeSubPage>
 
   Widget _tabs(BuildContext context) {
     return TabBar(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.only(bottom: 30),
         controller: _tabController,
         unselectedLabelColor: AppColor.grey,
         isScrollable: true,
@@ -107,7 +105,7 @@ class _HomeSubPageState extends State<HomeSubPage>
         indicatorColor: AppColor.primary,
         labelColor: AppColor.primary,
         tabAlignment: TabAlignment.start,
-        tabs: [
+        tabs: const [
           Text(
             'News',
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),

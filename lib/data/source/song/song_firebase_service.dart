@@ -28,7 +28,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
 
       return Right(songs);
     } catch (e) {
-      return Left('Error when getting news song data.');
+      return const Left('Error when getting news song data.');
     }
   }
 
@@ -47,7 +47,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
 
       return Right(songs);
     } catch (e) {
-      return Left('Error when getting playlist song data.');
+      return const Left('Error when getting playlist song data.');
     }
   }
 }

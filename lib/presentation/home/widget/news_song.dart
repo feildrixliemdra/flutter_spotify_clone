@@ -15,14 +15,14 @@ class NewsSong extends StatelessWidget {
       child:
           BlocBuilder<NewsSongCubit, NewsSongState>(builder: (context, state) {
         if (state is NewsSongLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (state is NewsSongLoaded) {
           return _songs(context, state.songs);
         }
 
-        return Center(
+        return const Center(
           child: Text('error when loading news song'),
         );
       }),
@@ -54,12 +54,12 @@ class NewsSong extends StatelessWidget {
                         image: NetworkImage(songs[index].coverImage),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   songs[index].title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -77,7 +77,7 @@ class NewsSong extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return SizedBox(
+        return const SizedBox(
           width: 14,
         );
       },

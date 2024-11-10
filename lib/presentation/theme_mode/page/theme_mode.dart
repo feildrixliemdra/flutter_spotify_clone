@@ -145,7 +145,6 @@ class _ThemeModePageState extends State<ThemeModePage> {
                     BasicAppButton(
                         text: 'Continue',
                         onPressed: () {
-                          print('printed');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
