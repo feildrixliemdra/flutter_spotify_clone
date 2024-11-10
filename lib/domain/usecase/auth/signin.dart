@@ -18,3 +18,17 @@ class SignUpUseCase implements UseCase<Either, CreateUserRequest> {
     return sl<AuthRepository>().signUp(param!);
   }
 }
+
+class SignOutUseCase implements UseCase<void, dynamic> {
+  @override
+  Future<void> call({param}) {
+    return sl<AuthRepository>().signOut();
+  }
+}
+
+class GetUserUseCase implements UseCase<Either, dynamic> {
+  @override
+  Future<Either> call({param}) {
+    return sl<AuthRepository>().getCurrentUser();
+  }
+}

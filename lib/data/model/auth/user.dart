@@ -1,19 +1,19 @@
 import 'package:flutter_spotify_clone/domain/entity/auth/user.dart';
 
-class User {
+class UserModel {
   String? fullName;
   String? email;
   String? imageURL;
 
-  User({this.fullName, this.email, this.imageURL});
+  UserModel({this.fullName, this.email, this.imageURL});
 
-  User.fromJson(Map<String, dynamic> data) {
+  UserModel.fromJson(Map<String, dynamic> data) {
     fullName = data['name'];
     email = data['email'];
   }
 }
 
-extension UserX on User {
+extension UserX on UserModel {
   UserEntity toEntity() {
     return UserEntity(
       email: email,
