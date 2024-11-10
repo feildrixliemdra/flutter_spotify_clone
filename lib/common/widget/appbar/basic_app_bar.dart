@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spotify_clone/main.dart';
+import 'package:flutter_spotify_clone/presentation/play_song/bloc/play_song_cubit.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;

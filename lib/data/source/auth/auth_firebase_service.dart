@@ -1,12 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:flutter_spotify_clone/data/model/auth/sign_in_request.dart';
 import 'package:flutter_spotify_clone/data/model/auth/sign_up_request.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spotify_clone/data/model/auth/user.dart';
+import 'package:flutter_spotify_clone/data/model/song/song.dart';
+import 'package:flutter_spotify_clone/domain/entity/auth/user.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signUp(CreateUserRequest createUserReq);
   Future<Either> signIn(SignInRequest signInReq);
+  Future<Either> getCurrentUser();
+  Future<void> signOut();
 }
 
 class AuthFirebaseImpl extends AuthFirebaseService {
@@ -35,6 +41,14 @@ class AuthFirebaseImpl extends AuthFirebaseService {
     try {
       var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: createUserReq.email, password: createUserReq.password);
+
+      FirebaseFirestore.instance.collection('users').add({
+        'id': data.user?.uid,
+        'email': data.user?.email.toString(),
+        'fullName': createUserReq.fullName,
+        'createdAt': DateTime.now(),
+      });
+
       return const Right('Signup success!');
     } on FirebaseAuthException catch (e) {
       String message = '';
@@ -44,9 +58,50 @@ class AuthFirebaseImpl extends AuthFirebaseService {
       } else if (e.code == 'email-already-in-use') {
         message = 'An account already exists with that email.';
       }
-      print('error $e');
-
       return Left(message);
     }
+  }
+
+  @override
+  Future<Either> getCurrentUser() async {
+    UserEntity userEntity;
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    try {
+      User? usr = _auth.currentUser;
+      if (usr != null) {
+        // Get the user's email
+        String userEmail = usr.email!;
+
+        // Query Firestore for a document in the users collection with this email
+        QuerySnapshot querySnapshot = await _firestore
+            .collection('users')
+            .where('email', isEqualTo: userEmail)
+            .get();
+
+        if (querySnapshot.docs.isNotEmpty) {
+          // Assuming there is only one document per email
+          DocumentSnapshot userDoc = querySnapshot.docs.first;
+
+          return Right(UserEntity(
+            email: userDoc.get('email'),
+            fullName: userDoc.get('fullName'),
+          ));
+        } else {
+          return Left('No user found with this email.');
+        }
+      } else {
+        return Left('No user is currently signed in.');
+      }
+    } catch (e) {
+      return Left("Error fetching user data: $e");
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    await _auth.signOut();
   }
 }
